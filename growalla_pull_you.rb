@@ -17,12 +17,9 @@ feed         = Feedzirra::Feed.fetch_and_parse("http://gowalla.com/users/#{usern
 
 loop do
   feed.new_entries.last(2).each do |entry|
-    location = entry.activity_objects.first
-    actor    = entry.actors.first
-
     command = %W(/usr/local/bin/growlnotify #{location.title} -m #{entry.summary})
 
-    if image = avatar_cache.image_badge(actor.image_url, location.image_url)
+    if image = avatar_cache.image_badge(entry.actor.image_url, entry.location.image_url)
       command += %W(--image #{image})
     end
 

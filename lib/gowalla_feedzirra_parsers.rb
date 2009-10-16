@@ -24,5 +24,13 @@ module Gowalla
   end
 
 end
-Feedzirra::Parser::AtomEntry.elements "activity:actor", :as => 'actors', :class => Gowalla::ActivityActor
-Feedzirra::Parser::AtomEntry.elements "activity:object", :as => 'activity_objects', :class => Gowalla::ActivityObject
+
+class Feedzirra::Parser::AtomEntry
+  elements "activity:actor", :as => 'actors', :class => Gowalla::ActivityActor
+  def actor; actors.first; end
+
+  elements "activity:object", :as => 'activity_objects', :class => Gowalla::ActivityObject
+  def activity_object; activity_objects.first; end
+  alias_method :location, :activity_object
+end
+

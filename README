@@ -30,3 +30,25 @@ TODO:
 - check that growlnotify exists
 
 sco@scottraymond.net
+
+-------------------------------------------------
+growalla_pull_you.rb
+Growl notifications without the hubbub
+
+I tried using the PubSubHubbub version for a while but never seemed to get
+any updates. In hopes to get something working, I changed to a polling-based
+client.
+
+I also added displaying of avatars... because it just doesn't look good
+without them.
+
+You can see an example of it as:
+  http://skitch.com/lindvall/ndcxt/growalla-avatar-example
+
+USAGE:
+  $ ruby growalla_pull_you.rb lindvall  [again, your Gowalla username]
+
+  You'll then see any new notifications as they float in.
+
+
+eric@5stops.com

@@ -26,6 +26,9 @@ loop do
     system *command
   end
 
+  # Clear out the new_entries
+  feed.new_entries = []
+
   sleep INTERVAL
   feed = Feedzirra::Feed.update(feed)
 end

@@ -30,5 +30,10 @@ loop do
   feed.new_entries = []
 
   sleep INTERVAL
-  feed = Feedzirra::Feed.update(feed)
+
+  if (updated_feed = Feedzirra::Feed.update(feed)).is_a?(Numeric)
+    puts "Got HTTP error #{updated_feed}"
+  else
+    feed = updated_feed
+  end
 end
